@@ -9,9 +9,10 @@ def load():
 
 def show_info():
     i = 0
+    l = len(client_info['accounts'])
     print("Информация о счетах")
     print("----------------------------------")
-    for accounts in client_info:
+    for accounts in client_info['accounts']:
         print("Имя:", client_info['accounts'][i]['name'])
         print("Платёжная система:", client_info['accounts'][i]['system'])
         print("Номер:", client_info['accounts'][i]['number'])
@@ -19,7 +20,6 @@ def show_info():
         print("Баланс:", client_info['accounts'][i]['balance'])
         print("Срок действия до", client_info['accounts'][i]['validity period'])
         print("----------------------------------")
-        i += 1
 
 load()
 show_info()
