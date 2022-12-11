@@ -19,5 +19,22 @@ def show_info():
         print("Срок действия до", accounts['validity period'])
         print("----------------------------------")
 
+
+def predict():
+    month = []
+    sum_cancelletion = 0
+    sum_income = 0
+    for transaction in client_info['transactions']:
+        if transaction["type"] == 'списание':
+            sum_cancelletion += transaction['amount']
+        elif transaction["type"] == 'зачисление':
+            sum_income += transaction['amount']
+        if transaction["date"] not in month:
+            month.append(transaction["date"])
+
+    print("Предполагаемые расходы в следующем месяце: ", sum_cancelletion / len(month))
+    print("Предполагаемые доходы в следующем месяце: ", sum_income / len(month))
+
 load()
 show_info()
+predict()
