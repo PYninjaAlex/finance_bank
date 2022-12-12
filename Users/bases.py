@@ -11,8 +11,11 @@ def load():
 def add():
     for i in range(100):
         users_info['Users'].append(fake.profile())
-        del users_info['Users'][i]['current_location']
-        del users_info['Users'][i]['birthdate']
+        if 'current_location' in users_info:
+            del users_info['Users'][i]['current_location']
+        if 'birthdate' in users_info:
+            del users_info['Users'][i]['birthdate']
+
 
 def save():
     with open('users_info_out.json', 'w', encoding='utf-8') as outfile:
