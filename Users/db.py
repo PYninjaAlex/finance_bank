@@ -15,3 +15,9 @@ with sq.connect('users.db') as con:
         )''')
     cur.execute('''INSERT INTO users (name, sex, age, mail, job, company, username, adress)
      VALUES ("user_1", "F", 12, "skyportsoul@mail.ru", "programmer", "Yandex", "PYninjaAlex", "Krasnormeyskay str." )''')
+
+    cur.execute('DROP TABLE IF EXISTS id')
+    cur.execute('''CREATE TABLE IF NOT EXISTS id(
+        user_1_id TEXT NOT NULL
+        )''')
+    cur.execute('INSERT INTO id (user_1_id) VALUES (532131) ')
