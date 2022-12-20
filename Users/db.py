@@ -50,12 +50,23 @@ with sq.connect('users.db') as con:
     # create_table()
     # add()
     # new_table()
+print('First select =>\n')
+cur.execute('''
+    SELECT name, sex, age FROM users
+    WHERE sex = "M" and
+    age BETWEEN 10 AND 15
+''')
+
+for result in cur:
+    print(result)
+
+print('\nSecond select =>\n')
 
 cur.execute('''
-    SELECT name, sex, age FROM users 
-    WHERE sex = "M" 
-    ORDER BY age DESC 
-    LIMIT 5 OFFSET 10
+    SELECT name FROM users
+    WHERE name BETWEEN 'Александр Андреевич Живагин'
+    AND 'Пелагея Ивановна Суворова'
+    ORDER BY name
 ''')
 
 for result in cur:
